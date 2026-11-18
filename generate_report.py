@@ -270,11 +270,15 @@ def generate_pdf():
 
     story = []
 
+    repo_url = "https://github.com/devalimm/machinelearning1"
     banner_content = [
-        [Paragraph("Makine Öğrenmesi Proje Raporu", styles["Subtitle"])],
-        [Paragraph("Ali Mammadli 23060005", styles["Subtitle"])],
+        [Paragraph("Makine Öğrenmesi Proje Raporu  |  Ali Mammadli (23060005)", styles["Subtitle"])],
         [Paragraph("İki Sınıflı Doğrusal Olmayan Veri Kümesi Üzerinde<br/>Doğrusal ve Lojistik Regresyon Karşılaştırması", styles["Title"])],
-        [Paragraph("Veri Kümesi: Social Network Ads (Kaggle, n = 400)  |  Dil: Python (Sıfırdan NumPy Uygulaması)", styles["Subtitle"])],
+        [Paragraph(
+            f'Veri Kümesi: Social Network Ads (Kaggle, n = 400)  |  Dil: Python (Sıfırdan NumPy)<br/>'
+            f'GitHub Deposu: <link href="{repo_url}" color="#93C5FD"><u>{repo_url}</u></link>',
+            styles["Subtitle"],
+        )],
     ]
     banner = Table(banner_content, colWidths=[17.0 * cm])
     banner.setStyle(
@@ -558,6 +562,14 @@ def generate_pdf():
             "açıdan Doğrusal Regresyona göre daha uygun bir algoritma olduğu doğrulanmıştır. Doğrusal olmayan veri kümelerinde bu iki modelin "
             "başarımını daha da artırmak için ileri çalışma olarak polinomsal özellik dönüşümü veya doğrusal olmayan sınıflandırıcılar "
             "(örn. RBF Çekirdekli SVM, Karar Ağaçları, Yapay Sinir Ağları) kullanılabilir.",
+            styles["Body"],
+        )
+    )
+
+    story.append(
+        Paragraph(
+            f'<b>Kaynak Kod Deposu (GitHub):</b> '
+            f'<link href="{repo_url}" color="#1D4ED8"><u>{repo_url}</u></link>',
             styles["Body"],
         )
     )
